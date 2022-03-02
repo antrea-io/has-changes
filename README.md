@@ -18,9 +18,7 @@ of paths.
 ## Example usage
 
 ```yaml
-uses: antrea-io/antrea/ci/gh-actions/has-changes@main
+uses: antrea-io/has-changes@v1
 with:
   args: docs *.md ci
 ```
-
-Make sure to checkout the repo first.
