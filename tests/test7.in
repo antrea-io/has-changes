@@ -1,0 +1,3 @@
+t.bin x/y/z.md x/y.md
+x/y/*
+*.md

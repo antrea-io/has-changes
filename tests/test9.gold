@@ -1,0 +1,7 @@
+* Changed files are:
+plugins/octant/foo.go pkg/foo.go docs/bar.md hack/.notableofcontents
+* Changed files after filtering with patterns are:
+plugins/octant/foo.go pkg/foo.go docs/bar.md hack/.notableofcontents
+* Changed files after filtering with ignore_patterns are:
+pkg/foo.go
+* Has changes: true

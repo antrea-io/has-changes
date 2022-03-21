@@ -13,10 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 set -eo pipefail
 
-read -r -a PATTERNS <<< "$*"
+read -r -a PATTERNS <<< "$1"
+read -r -a IGNORE_PATTERNS <<< "$2"
+
+echo "PATHS: ${PATTERNS[@]}"
+echo "IGNORE_PATHS: ${IGNORE_PATTERNS[@]}"
+
+THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+source $THIS_DIR/check_changes.sh
 
 cat "$GITHUB_EVENT_PATH"
 
@@ -44,23 +51,7 @@ if [[ $rc -ne 0 ]]; then
     exit 0
 fi
 
-echo "CHANGED_FILES are:"
-echo "$CHANGED_FILES"
-
-has_changes=false
-for changed_file in $CHANGED_FILES; do
-    matched=false
-    for pattern in "${PATTERNS[@]}"; do
-        if [[ "$changed_file" == $pattern ]]; then
-            matched=true
-            break
-        fi
-    done
-    if ! $matched; then
-        has_changes=true
-        break
-    fi
-done
+has_changes=$(check_changes "$CHANGED_FILES" "${PATTERNS[@]}" "${IGNORE_PATTERNS[@]}")
 
 if $has_changes; then
     echo "Setting 'has_changes' to 'yes'"

@@ -8,5 +8,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /entrypoint.sh
+COPY check_changes.sh /check_changes.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

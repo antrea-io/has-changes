@@ -1,0 +1,3 @@
+plugins/octant/foo.go pkg/foo.go docs/bar.md hack/.notableofcontents
+*
+docs/* ci/jenkins/* *.md hack/.notableofcontents plugins/*
