@@ -19,14 +19,16 @@ jobs:
         ./run_tests.sh
 
   action:
-    runs-ons: [ubuntu-latest]
+    runs-on: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: Run action
-      uses: ./.github/actions/has-changes
+      uses: ./
       id: run_action
       with:
-        paths: *
-        paths-ignore: *.md
+        paths: "*"
+        paths-ignore: "*.md"
     outputs:
       has_changes: ${{ steps.run_action.outputs.has_changes }}
