@@ -1,0 +1,14 @@
+# Test output files
+tests/*.out
+
+.DS_Store
+
+# VIM
+.*.swp
+
+# Emacs
+*~
+
+.idea/
+.vscode/
+vendor

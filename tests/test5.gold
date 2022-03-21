@@ -1,0 +1,7 @@
+* Changed files are:
+t.bin w.txt
+* Changed files after filtering with patterns are:
+
+* Changed files after filtering with ignore_patterns are:
+
+* Has changes: false

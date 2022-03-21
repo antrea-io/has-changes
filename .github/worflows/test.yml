@@ -1,0 +1,32 @@
+name: Tests
+on:
+  pull_request:
+    branches:
+    - main
+    - release-*
+  push:
+    branches:
+    - main
+    - release-*
+
+jobs:
+  golden-tests:
+    runs-on: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: |
+        ./run_tests.sh
+
+  action:
+    runs-ons: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run action
+      uses: ./.github/actions/has-changes
+      id: run_action
+      with:
+        paths: *
+        paths-ignore: *.md
+    outputs:
+      has_changes: ${{ steps.run_action.outputs.has_changes }}

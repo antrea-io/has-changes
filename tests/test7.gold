@@ -1,0 +1,7 @@
+* Changed files are:
+t.bin x/y/z.md x/y.md
+* Changed files after filtering with patterns are:
+x/y/z.md
+* Changed files after filtering with ignore_patterns are:
+
+* Has changes: false

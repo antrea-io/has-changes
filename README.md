@@ -1,12 +1,26 @@
 # "Has Changes" Docker Action
 
 This action sets a boolean output (`has_changes`) if the diff (`push` or
-`pull_request` event) includes changes outside of a provided list of paths.
+`pull_request` event) includes matching changes. Users can provide a list of
+paths that should be considered / included, as well as a list of paths that
+should be ignored / excluded.
+
+### How does this relate to native `paths` / `paths-ignore` support in Github Actions?
+
+When configuring
+[paths](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore)
+natively in Github Action, the worfklow will not run at all if all changes
+should be ignored. In turn, this means that no successful status will be
+reported for the workflow. This is not acceptable if you use protected branches,
+and pull requests can only be merged once all worfklows report a successful
+status. This is why this Github Action was created.
 
 ## Inputs
 
-The list of paths to exclude. The action will use Bash pattern matching, so
-wildcards (`*`) are supported.
+* An optional list of paths to include. By default, all paths will be included.
+* An optional list of paths to exclude. By default, no path will be excluded.
+
+The action will use Bash pattern matching, so wildcards (`*`) are supported.
 
 ## Outputs
 
@@ -20,7 +34,7 @@ of paths.
 ```yaml
 uses: antrea-io/antrea/ci/gh-actions/has-changes@main
 with:
-  args: docs *.md ci
+  paths-ignore: docs *.md ci
 ```
 
 Make sure to checkout the repo first.
