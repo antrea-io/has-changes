@@ -2,14 +2,14 @@
 name: 'Has Changes'
 description: 'Checks if diff includes changes in the provided path list, outside of the provided path exclusion list'
 inputs:
-  paths-ignore:
-    description: "Space-separated list of paths to ignore when looking for changes (default is empty list)"
-    required: false
-    default: ''
   paths:
     description: "Space-separated list of paths to consider when looking for changes (default is wildcard path)"
     required: false
     default: '*'
+  paths-ignore:
+    description: "Space-separated list of paths to ignore when looking for changes (default is empty list)"
+    required: false
+    default: ''
 outputs:
   has_changes:
     description: 'Whether (yes/no) the diff includes changes'
@@ -17,5 +17,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.paths-ignore }}
     - ${{ inputs.paths }}
+    - ${{ inputs.paths-ignore }}
