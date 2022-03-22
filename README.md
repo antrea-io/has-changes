@@ -32,7 +32,20 @@ of paths.
 ## Example usage
 
 ```yaml
-uses: antrea-io/has-changes@v1
-with:
-  paths-ignore: docs *.md ci
+jobs:
+  has-changes:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+      with:
+        # fetch all history for all branches and tags (this is required for the has-changes action)
+        fetch-depth: 0
+    - name: Run action
+      uses: antrea-io/has-changes@v2
+      id: run_action
+      with:
+        paths-ignore: docs *.md ci
+    outputs:
+      has_changes: ${{ steps.run_action.outputs.has_changes }}
 ```
