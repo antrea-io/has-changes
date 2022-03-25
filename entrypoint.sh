@@ -51,7 +51,7 @@ if [[ $rc -ne 0 ]]; then
     exit 0
 fi
 
-has_changes=$(check_changes "$CHANGED_FILES" "${PATTERNS[@]}" "${IGNORE_PATTERNS[@]}")
+has_changes=$(check_changes "$CHANGED_FILES" "${PATTERNS[*]}" "${IGNORE_PATTERNS[*]}")
 
 if $has_changes; then
     echo "Setting 'has_changes' to 'yes'"
