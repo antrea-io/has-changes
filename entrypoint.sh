@@ -25,6 +25,10 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 source $THIS_DIR/check_changes.sh
 
+# See https://github.com/actions/checkout/issues/760
+echo "Adding repository directory to the git global config as a safe directory"
+git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
 cat "$GITHUB_EVENT_PATH"
 
 PR_BASE_SHA=$(jq -r '.pull_request.base.sha' "$GITHUB_EVENT_PATH")
