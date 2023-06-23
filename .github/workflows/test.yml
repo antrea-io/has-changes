@@ -11,7 +11,7 @@ on:
 
 jobs:
   golden-tests:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Run tests
@@ -19,7 +19,7 @@ jobs:
         ./run_tests.sh
 
   action:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
       with:
