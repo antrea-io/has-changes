@@ -29,20 +29,19 @@
     {
       matchManagers: ["dockerfile"],
       addLabels: ["docker"],
-      enabled: true,
     },
 
+    // Only update the image sha, but not the tag
     {
       matchManagers: ["dockerfile"],
       matchPackageNames: ["ubuntu"],
       matchUpdateTypes: ["major", "minor"],
-      enabled: false, // this should update the image sha, but not the tag
+      enabled: false,
     },
 
     {
       matchManagers: ["github-actions"],
       addLabels: ["github_actions"],
-      enabled: true,
     },
   ],
 }
