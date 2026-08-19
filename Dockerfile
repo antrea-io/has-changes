@@ -1,4 +1,4 @@
-FROM ubuntu:24.04@sha256:1428a953896eef9e62fc6ef60cad05bbf98769f6ea5f8c278e519b9dd168ab26
+FROM ubuntu:24.04@sha256:d78ab76437b1afc5f01e223d6bf0172763f404bb166441328845adbef44518cb
 
 LABEL maintainer="Antrea <projectantrea-dev@googlegroups.com>"
 LABEL description="A Docker-based Github action to determine if changes were made outside of a provided path exclusion list."
